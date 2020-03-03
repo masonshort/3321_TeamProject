@@ -1,2 +1,2 @@
 # 3321_TeamProject
-test change
+Class project to create a student database, GUI to manipulate the database, and algorithm that computes each students GPA.
