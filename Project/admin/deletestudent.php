@@ -3,7 +3,21 @@
 <?php echo AdminAreaAccess(); ?>
 
 <?php include('../header.php') ?>
-<?php include('admin.header.php') ?>
+
+<?php include('../header.php') ?>
+<div class="header-section jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="text-center">
+					<span><a href="admindash.php" class="btn btn-success" style="float: left;">BACK TO STUDENT DASHBOARD</a><span>
+					Welcome to the Student Dashboard
+					<span><a href="logout.php" class="btn btn-success" style="float: right;">LOGOUT</a><span>
+				</h2>	
+			</div>
+		</div>
+	</div>
+</div>
 
 
 <div class="container">

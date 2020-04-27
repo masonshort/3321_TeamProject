@@ -60,8 +60,7 @@
 		$result = mysqli_query($conn,$sql);
 		if (mysqli_num_rows($result)>0) {
 			while ($DataRows = mysqli_fetch_assoc($result)) {
-				$Number = $DataRows['number'];
-				$IdNo = $DataRows['idno'];
+				$StudentId = $DataRows['studentid'];
 				$Name = $DataRows['name'];
 				$Rcourses = $DataRows['rcourses'];
 				$Agpa = $DataRows['agpa'];
@@ -69,7 +68,7 @@
 				$ProfilePic = $DataRows['image'];
 				?>
 				<tr class="text-center">
-					<td><?php echo $IdNo;?></td>
+					<td><?php echo $StudentId;?></td>
 					<td><?php echo $Escore;?></td>
 					<td><?php echo $Name; ?></td>
 					<td><?php echo $Rcourses; ?></td>

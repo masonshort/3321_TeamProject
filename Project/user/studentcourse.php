@@ -18,46 +18,37 @@
 </div>
 
 <table class="table table-bordered table-striped table-responsive">
-	<h2 class="text-center">Your Student Profile</h2>
-	<a href="studentcourse.php" class="btn btn-success" style="float: right;">My Course</a>
+	<h2 class="text-center">Your Course(s)</h2>
 	<tr class="text-center">
-		<th>Student ID</th>
-		<th>Full Name</th>
-		<th>Average GPA</th>
-		<th>Profile Picture</th>
+		<th>Course ID</th>
+		<th>Course Name</th>
+
 	</tr>
 <?php 
-	include('../dbcon.php');
-        $sql = "SELECT * FROM student WHERE loginid = " . $_SESSION['loginid'];
+    include('../dbcon.php');
+    $sql = "SELECT a.loginid, a.studentid, a.name, c.coursename, c.coursesubj, c.coursenum FROM student a JOIN studentcourse b ON a.studentid = b.studentid JOIN course c ON b.courseid = c.courseid WHERE a.loginid = " . $_SESSION['loginid'];
 
 		$result = mysqli_query($conn,$sql);
 		if (mysqli_num_rows($result)>0) {
 			while ($DataRows = mysqli_fetch_assoc($result)) {
-				$StudentId = $DataRows['studentid'];
-				$Name = $DataRows['name'];
-				$Agpa = $DataRows['agpa'];
-				$ProfilePic = $DataRows['image'];
+				$CourseName = $DataRows['coursename'];
+				$CourseSubj = $DataRows['coursesubj'];
+				$CourseNum = $DataRows['coursenum'];
 				?>
 				<tr class="text-center">
-					<td><?php echo $StudentId;?></td>
-					<td><?php echo $Name; ?></td>
-					<td><?php echo $Agpa; ?></td>
-					<td>
-						<img src="../databaseimg/<?php echo $ProfilePic;?>" alt="img"><br><br>
-						<form action="UpdateImg.php" method="post" enctype="multipart/form-data">
-							<input type="hidden" name="number" value="<?php echo $Number; ?>">
-						</form>
-					</td>
+					<td><?php echo $CourseSubj . " " . $CourseNum; ?></td>
+					<td><?php echo $CourseName; ?></td>
+
 				</tr>
 				<?php
 				
 			}
 			
-			
 		} else {
 			echo "<tr><td colspan ='7' class='text-center'>No Record Found</td></tr>";
 		}
  ?>
+	
 
 </table>
 </div>

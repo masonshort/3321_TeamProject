@@ -23,9 +23,9 @@
             <div>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 jumbotron" >
-                        <a href="addstudent.php" class="btn btn-info btn-lg">INSERT STUDENT DETAIL</a><br><br>
-                        <a href="studentprofile.php" class="btn btn-info btn-lg">VIEW MY PROFILE</a><br><br>
-                        <a href="deletestudent.php" class="btn btn-info btn-lg">DELETE STUDENT DETAIL</a>   
+                        <a href="studentprofile.php" class="btn btn-info btn-lg">View My Profile</a><br><br>
+                        <a href="studentcourse.php" class="btn btn-info btn-lg">View My Course</a><br><br>
+                        <a href="studentgrade.php" class="btn btn-info btn-lg">View My Grades</a>   
                     </div>
                 </div>
             </div>

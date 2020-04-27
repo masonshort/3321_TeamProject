@@ -22,7 +22,7 @@
                         <div class="col-md-12 jumbotron">
                             <h2>Student's information</h2>
                             <form action="index.php" method="post">
-                <input type="text" name="id" placeholder="Enter Student ID" style="width: 240px;height: 35px;"><span>OR/AND<span>
+                <input type="text" name="studentid" placeholder="Enter Student ID" style="width: 240px;height: 35px;"><span>OR/AND<span>
                  <select name="escore" class="btn btn-info" >
                                     <option>SELECT EXAM SCORE</option>
                                     <option>60</option>
@@ -52,15 +52,14 @@
     if (isset($_POST['show'])) {
 
         $Escore = $_POST['escore'];
-        $IdNo = $_POST['id'];
+        $StudentIdQuery = $_POST['studentid'];
 
-        $sql = "SELECT * FROM `student` WHERE `escore` = '$Escore' OR `idno`='$IdNo'";
+        $sql = "SELECT * FROM `student` WHERE `escore` = '$Escore' OR `studentid`='$StudentIdQuery'";
 
         $result = mysqli_query($conn,$sql);
         if (mysqli_num_rows($result)>0) {
             while ($DataRows = mysqli_fetch_assoc($result)) {
-                $Number = $DataRows['number'];
-                $IdNo = $DataRows['idno'];
+                $StudentId = $DataRows['studentid'];
                 $Name = $DataRows['name'];
                 $Rcourses = $DataRows['rcourses'];
                 $Agpa = $DataRows['agpa'];
@@ -68,7 +67,7 @@
                 $ProfilePic = $DataRows['image'];
                 ?>
                 <tr>
-                    <td><?php echo $IdNo;?></td>
+                    <td><?php echo $StudentId;?></td>
                     <td><?php echo $Escore;?></td>
                     <td><?php echo $Name; ?></td>
                     <td><?php echo $Rcourses; ?></td>

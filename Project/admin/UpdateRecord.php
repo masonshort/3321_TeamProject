@@ -11,7 +11,7 @@
 
 	while ($data_row = mysqli_fetch_assoc($result)) {
 		$update_number = $data_row['number']; 
-		$Id = $data_row['idno'];
+		$StudentId = $data_row['studentid'];
 		$Name = $data_row['name'];
 		$Rcourses = $data_row['rcourses'];
 		$Agpa = $data_row['agpa'];
@@ -23,7 +23,20 @@
 
 <?php include('../header.php') ?>
 
-<?php include('admin.header.php') ?>
+<?php include('../header.php') ?>
+<div class="header-section jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="text-center">
+					<span><a href="admindash.php" class="btn btn-success" style="float: left;">BACK TO STUDENT DASHBOARD</a><span>
+					Welcome to the Student Dashboard
+					<span><a href="logout.php" class="btn btn-success" style="float: right;">LOGOUT</a><span>
+				</h2>	
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="container jumbotron">
 	<div class="row">
@@ -73,7 +86,7 @@
 			$agpa=$_POST['agpa'];
 			$escore=$_POST['escore'];
 
-			$sql = "UPDATE student SET idno = '$id', name = '$name', rcourses='$rcourses', agpa = '$agpa', escore = '$escore' WHERE number = '$number'";
+			$sql = "UPDATE student SET studentid = '$id', name = '$name', rcourses='$rcourses', agpa = '$agpa', escore = '$escore' WHERE number = '$number'";
 
 			$Execute = mysqli_query($conn,$sql);
 
