@@ -28,20 +28,19 @@
 	</tr>
 <?php 
 	include('../dbcon.php');
-        $sql = "SELECT * FROM student WHERE loginid = " . $_SESSION['loginid'];
-
+		$sql = "SELECT * FROM student WHERE loginid = " . $_SESSION['loginid'];
 		$result = mysqli_query($conn,$sql);
 		if (mysqli_num_rows($result)>0) {
 			while ($DataRows = mysqli_fetch_assoc($result)) {
 				$StudentId = $DataRows['studentid'];
 				$Name = $DataRows['name'];
-				$Agpa = $DataRows['agpa'];
+				$gpa = $DataRows['gpa'];
 				$ProfilePic = $DataRows['image'];
 				?>
 				<tr class="text-center">
 					<td><?php echo $StudentId;?></td>
 					<td><?php echo $Name; ?></td>
-					<td><?php echo $Agpa; ?></td>
+					<td><?php echo $gpa; ?></td>
 					<td>
 						<img src="../databaseimg/<?php echo $ProfilePic;?>" alt="img"><br><br>
 						<form action="UpdateImg.php" method="post" enctype="multipart/form-data">

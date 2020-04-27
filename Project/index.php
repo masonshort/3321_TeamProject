@@ -62,7 +62,7 @@
                 $StudentId = $DataRows['studentid'];
                 $Name = $DataRows['name'];
                 $Rcourses = $DataRows['rcourses'];
-                $Agpa = $DataRows['agpa'];
+                $gpa = $DataRows['gpa'];
                 $Escore = $DataRows['escore'];
                 $ProfilePic = $DataRows['image'];
                 ?>
@@ -71,7 +71,7 @@
                     <td><?php echo $Escore;?></td>
                     <td><?php echo $Name; ?></td>
                     <td><?php echo $Rcourses; ?></td>
-                    <td><?php echo $Agpa; ?></td>
+                    <td><?php echo $gpa; ?></td>
                     <td><img src="databaseimg/<?php echo $ProfilePic;?>" alt="img"></td>
                 </tr>
                 <?php

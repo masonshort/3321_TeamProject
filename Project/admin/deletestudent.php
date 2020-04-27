@@ -66,14 +66,14 @@
 				$StudentId = $DataRows['studentid'];
 				$Name = $DataRows['name'];
 				$Rcourses = $DataRows['rcourses'];
-				$Agpa = $DataRows['agpa'];
+				$gpa = $DataRows['gpa'];
 				$ProfilePic = $DataRows['image'];
 				?>
 				<tr>
 					<td><?php echo $StudentId;?></td>
 					<td><?php echo $Name; ?></td>
 					<td><?php echo $Rcourses; ?></td>
-					<td><?php echo $Agpa; ?></td>
+					<td><?php echo $gpa; ?></td>
 					<td><img src="../databaseimg/<?php echo $ProfilePic;?>" alt="img"></td>
 					<td><a href="deleterecord.php?Delete=<?php echo $Number; ?>&Picture=<?php echo $ProfilePic;?>" class="btn btn-danger">Delete</a></td>
 				</tr>

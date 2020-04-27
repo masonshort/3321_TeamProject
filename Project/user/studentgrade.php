@@ -2,6 +2,7 @@
 <?php require_once('../include/Functions.php');?>
 <?php echo UserAreaAccess(); ?>
 
+
 <?php include('../header.php') ?>
 <div class="header-section jumbotron">
 	<div class="container">

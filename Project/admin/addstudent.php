@@ -33,7 +33,7 @@
 				  </div>
 				  <div class="form-group">
 				    
-				    Average GPA:<input type="text" class="form-control" name="agpa" placeholder="Enter Average GPA" required>
+				    Average GPA:<input type="text" class="form-control" name="gpa" placeholder="Enter Average GPA" required>
 				  </div>
 				  <div class="form-group">
 				    
@@ -61,11 +61,11 @@
 			include ('../dbcon.php');
 			$name=$_POST['fullname'];
 			$rcourses=$_POST['rcourses'];
-			$agpa=$_POST['agpa'];
+			$gpa=$_POST['gpa'];
 			$escore=$_POST['escore'];
 			include('ImageUpload.php');
 
-			$sql = "INSERT INTO `student`(`name`, `rcourses`, `agpa`, `escore`,`image`) VALUES ($name','$rcourses','$agpa', '$escore','$imgName')";
+			$sql = "INSERT INTO `student`(`name`, `rcourses`, `gpa`, `escore`,`image`) VALUES ($name','$rcourses','$gpa', '$escore','$imgName')";
 
 			$run = mysqli_query($conn,$sql);
 

@@ -1,4 +1,8 @@
 <?php session_start();?>
+<?php require_once('include/Functions.php');?>
+<?php echo UpdateCourseGrade(); ?>
+<?php echo UpdateGradePoint(); ?>
+<?php echo UpdateGPA(); ?>
 
 <?php include('header.php') ?>
             <div class="jumbotron text-center">

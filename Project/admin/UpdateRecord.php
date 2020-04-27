@@ -14,7 +14,7 @@
 		$StudentId = $data_row['studentid'];
 		$Name = $data_row['name'];
 		$Rcourses = $data_row['rcourses'];
-		$Agpa = $data_row['agpa'];
+		$gpa = $data_row['gpa'];
 		$Escore = $data_row['escore'];
 
 	}
@@ -57,7 +57,7 @@
 				  </div>
 				  <div class="form-group">
 				    
-				    Average GPA:<input type="text" class="form-control" name="agpa" value="<?php echo $Agpa;?>" required>
+				    Average GPA:<input type="text" class="form-control" name="gpa" value="<?php echo $gpa;?>" required>
 				  </div>
 				  <div class="form-group">
 				    
@@ -83,10 +83,10 @@
 			$id=$_POST['id'];
 			$name=$_POST['fullname'];
 			$rcourses=$_POST['rcourses'];
-			$agpa=$_POST['agpa'];
+			$gpa=$_POST['gpa'];
 			$escore=$_POST['escore'];
 
-			$sql = "UPDATE student SET studentid = '$id', name = '$name', rcourses='$rcourses', agpa = '$agpa', escore = '$escore' WHERE number = '$number'";
+			$sql = "UPDATE student SET studentid = '$id', name = '$name', rcourses='$rcourses', gpa = '$gpa', escore = '$escore' WHERE number = '$number'";
 
 			$Execute = mysqli_query($conn,$sql);
 
