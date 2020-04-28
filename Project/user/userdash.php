@@ -18,14 +18,14 @@
 </div>
 
 <div class="admin-dashboard text-center">
-        <div class="container">
-        	
+        <div class="container">      	
             <div>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 jumbotron" >
                         <a href="studentprofile.php" class="btn btn-info btn-lg">View My Profile</a><br><br>
                         <a href="studentcourse.php" class="btn btn-info btn-lg">View My Course</a><br><br>
-                        <a href="studentgrade.php" class="btn btn-info btn-lg">View My Grades</a>   
+                        <a href="studentgrade.php" class="btn btn-info btn-lg">View My Exam Grades</a><br><br>
+                        <a href="studentcoursegrade.php" class="btn btn-info btn-lg">View My Course Grades</a>      
                     </div>
                 </div>
             </div>

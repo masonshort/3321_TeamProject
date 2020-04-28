@@ -21,14 +21,13 @@
 		<div class="col-md-6 col-md-offset-3  jumbotron ">
 			<div  style="text-align: center;">
 				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data" >
-				Choose Exam Score: <select name="escore" class="btn btn-info" style="margin-right: 30px;">					<option>Select</option>
-									<option>60</option>
-									<option>70</option>
-									<option>80</option>
-									<option>90</option>
-									<option>100</option>
+				Choose Search Type: <select name="searchType" class="btn btn-info" style="margin-right: 30px;">					<option>Select</option>
+									<option>Student ID</option>
+									<option>Name</option>
+									<option>Registered Courses</option>
+									<option>GPA</option>
 								</select>
-				<input type="submit" name="search" value="SEARCH" class="btn btn-success">
+				<input type="submit" name="search" value="CONFIRM" class="btn btn-success">
 			</form>
 			</div>
 		</div>
@@ -38,13 +37,14 @@
     echo  ErrorMessage();
     echo  SuccessMessage();
  ?>
+
 <table class="table table-bordered table-striped table-responsive">
 	<h2 class="text-center">Update Student's Information</h2>
 	<tr class="text-center">
 		<th>Student Id</th>
 		<th>Exam Score</th>
 		<th>Full Name</th>
-		<th >Registered Courses</th>
+		<th>Registered Courses</th>
 		<th>Average GPA</th>
 		<th>Profile Pic</th>
 		<th>Update</th>

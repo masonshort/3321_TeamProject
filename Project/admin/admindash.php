@@ -23,6 +23,7 @@
             <div>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 jumbotron" >
+                        <a href="studentdetail.php" class="btn btn-info btn-lg">Student List</a><br><br>
                         <a href="addstudent.php" class="btn btn-info btn-lg">INSERT STUDENT DETAIL</a><br><br>
                         <a href="updatestudent.php" class="btn btn-info btn-lg">UPDATE STUDENT DETAIL</a><br><br>
                         <a href="deletestudent.php" class="btn btn-info btn-lg">DELETE STUDENT DETAIL</a>   
