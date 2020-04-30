@@ -26,8 +26,11 @@
 									<option>Name</option>
 									<option>Registered Courses</option>
 									<option>GPA</option>
-								</select>
-				<input type="submit" name="search" value="CONFIRM" class="btn btn-success">
+								</select><br><br>
+								<div class="form-group">
+                                  <input type="text" class="form-control" name="search" placeholder=" Enter Value" required>
+                              </div>
+				<input type="submit" name="confirm" value="CONFIRM" class="btn btn-success">
 			</form>
 			</div>
 		</div>
@@ -51,28 +54,29 @@
 	</tr>
 <?php 
 	include('../dbcon.php');
-	if (isset($_POST['search'])) {
+	if (isset($_POST['confirm'])) {
+		$searchType = $_POST['searchType'];
+		$search = $_POST['search'];
 
-		$escore = $_POST['escore'];
-
-		$sql = "SELECT * FROM `student` WHERE `escore` = '$escore'";
+		if ($searchType == 'Student ID'){
+			$sql = "SELECT * FROM student WHERE studentid = " . $search;
+		}
 
 		$result = mysqli_query($conn,$sql);
 		if (mysqli_num_rows($result)>0) {
 			while ($DataRows = mysqli_fetch_assoc($result)) {
 				$StudentId = $DataRows['studentid'];
 				$Name = $DataRows['name'];
-				$Rcourses = $DataRows['rcourses'];
 				$gpa = $DataRows['gpa'];
-				$Escore = $DataRows['escore'];
 				$ProfilePic = $DataRows['image'];
 				?>
 				<tr class="text-center">
 					<td><?php echo $StudentId;?></td>
-					<td><?php echo $Escore;?></td>
 					<td><?php echo $Name; ?></td>
-					<td><?php echo $Rcourses; ?></td>
-					<td><?php echo $gpa; ?></td>
+					<td><?php echo $gpa; 
+
+					
+					?></td>
 					<td>
 						<img src="../databaseimg/<?php echo $ProfilePic;?>" alt="img"><br><br>
 						<form action="UpdateImg.php" method="post" enctype="multipart/form-data">
@@ -81,7 +85,7 @@
 							<input type="submit" name="submitimg" value="UPDATE" class="btn btn-warning btn-sm" style="float: right;"><br>
 						</form>
 					</td>
-					<td><a href="UpdateRecord.php?Update=<?php echo $Number; ?>" class="btn btn-warning">UPDATE</a></td>
+					<td><a href="UpdateRecord.php?Update=".$DataRow['studentid'] class="btn btn-warning">UPDATE</a></td>
 				</tr>
 				<?php
 				

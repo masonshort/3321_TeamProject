@@ -76,7 +76,11 @@
 					</td>
 					<td><?php echo $StudentId;?></td>
 					<td><?php echo $Name; ?></td>
-                    <td><?php echo $gpa; ?></td>
+                    <td><?php echo $gpa; ?><br>
+                    <?php
+                    ?>
+                    <a href= 'viewstudentgrade.php?studentid=' .$StudentId class="btn btn-success" style="float: center;">View Grades
+                    </td>
                     <td><?php echo $stringCourse; ?></td>
 
 				</tr>
