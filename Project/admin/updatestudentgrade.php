@@ -6,6 +6,7 @@
 
 <?php include('../header.php');
 $studentidparam= $_GET['studentid'];
+$gradeidparam= $_GET['gradeid'];
 ?>
 <div class="header-section jumbotron">
 	<div class="container">
@@ -24,15 +25,19 @@ $studentidparam= $_GET['studentid'];
 		</div>
 	</div>
 </div>
-<?php
 
-$sql0 = "SELECT studentid, name FROM student WHERE studentid = " . $studentidparam;
+
+<?php
+$sql0 = "SELECT a.studentid, a.name, b.grade FROM student a JOIN studentgrade b ON a.studentid = b.studentid WHERE a.studentid = " . $studentidparam;
+$sql0.= " AND b.gradeid = ";
+$sql0.= $gradeidparam;
 
 		$result0 = mysqli_query($conn,$sql0);
 		if (mysqli_num_rows($result0)>0) {
 			while ($DataRows0 = mysqli_fetch_assoc($result0)) {
                 $StudentId = $DataRows0['studentid'];
                 $StudentName = $DataRows0['name'];
+                $Grade = $DataRows0['grade'];
             }
         }
         else {
@@ -41,21 +46,16 @@ $sql0 = "SELECT studentid, name FROM student WHERE studentid = " . $studentidpar
 ?>
 
 <table class="table table-bordered table-striped table-responsive">
-	<h2 class="text-center">Student Grades</h2>
+	<h2 class="text-center">Update Grade</h2>
 	<tr class="text-center">
 		<th>Student ID: <?php echo $StudentId ?></th>
         <th>Student Name: <?php echo $StudentName ?></th>
     </tr>
-
-<table class="table table-bordered table-striped table-responsive">
-	<tr class="text-center">
-		<th>Course</th>
-        <th>Exam Grades</th>
-    </tr>
 <?php 
 
-    $sql = "SELECT a.loginid, a.studentid, a.name, b.gradeid, b.grade, c.coursename, c.coursesubj, c.coursenum FROM student a JOIN studentgrade b ON a.studentid = b.studentid JOIN course c ON b.courseid = c.courseid WHERE a.studentid = " . $studentidparam;
-    $sql .= " ORDER BY c.coursename";
+	$sql = "SELECT a.loginid, a.studentid, a.name, b.gradeid, b.grade, c.coursename, c.coursesubj, c.coursenum FROM student a JOIN studentgrade b ON a.studentid = b.studentid JOIN course c ON b.courseid = c.courseid WHERE a.studentid = " . $studentidparam;
+	$sql .= " AND b.gradeid = ";
+	$sql .= $gradeidparam;
 
 		$result = mysqli_query($conn,$sql);
 		if (mysqli_num_rows($result)>0) {

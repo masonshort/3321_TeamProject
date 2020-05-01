@@ -35,7 +35,7 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 <?php
     echo  ErrorMessage();
     echo  SuccessMessage();
