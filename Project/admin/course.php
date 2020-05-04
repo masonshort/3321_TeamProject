@@ -24,6 +24,7 @@
 		<th>Course Name</th>
 		<th>Course Subject</th>
 		<th>Course Number</th>
+		<th>Actions</th>
 	</tr>
 <?php 
 	include('../dbcon.php');
@@ -40,7 +41,9 @@
 					<td><?php echo $CourseId;?></td>
 					<td><?php echo $CourseName; ?></td>
                     <td><?php echo $CourseSubj; ?></td>
-                    <td><?php echo $CourseNum; ?></td>
+					<td><?php echo $CourseNum; ?></td>
+					<td><span><a href="updatecourse.php?courseid=<?php echo $CourseId;?>" class="btn btn-success">Update</a><span>
+					</td>
 				</tr>
 				<?php
 				

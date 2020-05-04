@@ -46,12 +46,12 @@ $sql0.= $gradeidparam;
 ?>
 
 <table class="table table-bordered table-striped table-responsive">
-	<h2 class="text-center">Update Grade</h2>
+	<h2 class="text-center">Delete Grade</h2>
 	<tr class="text-center">
-		<th>Student ID: <?php echo $StudentId ?><br>
-		<a href="viewstudentgrade.php?studentid=<?php echo $studentidparam;?>" class="btn btn-success" style="float: left;">Return</th>
-		<th>Student Name: <?php echo $StudentName ?>
-	</th>
+        <th>Student ID: <?php echo $StudentId ?><br>
+        <a href="viewstudentgrade.php?studentid=<?php echo $studentidparam;?>" class="btn btn-success" style="float: left;">Return
+    </th>
+        <th>Student Name: <?php echo $StudentName ?></th>
     </tr>
 
 	<table class="table table-bordered table-striped table-responsive">
@@ -59,7 +59,7 @@ $sql0.= $gradeidparam;
 		<th>Course Label</th>
 		<th>Course Name</th>
 		<th>Current Grade</th>
-		<th>New Grade</th>
+		<th>Are you sure you want to delete?</th>
     </tr>
 
 <?php 
@@ -86,10 +86,10 @@ $sql0.= $gradeidparam;
 					<td>
 					<form action="" method="post">
 						<div class="form-group">
-							<input type="number" class="form-control" name="grade" placeholder=" Enter grade" required>
-						</div> 
-						<div class="form-group">
-							<input type="submit" name="confirm" value="CONFIRM" class="btn btn-success btn-block text-center" > 
+							<input type="submit" name="confirm" value="Yes" class="btn btn-warning btn-block text-center" > 
+                        </div> 
+                        <div class="form-group">
+							<input type="submit" name="reject" value="No" class="btn btn-secondary btn-block text-center" > 
 						</div> 
 					</form>
 					</td>
@@ -103,30 +103,34 @@ $sql0.= $gradeidparam;
 <?php
 
 	if (isset($_POST['confirm'])){
-		if (!empty($_POST['grade']) && is_numeric($_POST['grade']) && $_POST['grade'] <= 100 && $_POST['grade'] >= 0)
-		{
-			$newGrade = $_POST['grade'];
-			$qry = "UPDATE studentgrade SET grade = '$newGrade' WHERE studentid = $studentidparam AND gradeid = $gradeidparam";
+
+			$qry = "DELETE FROM studentgrade WHERE gradeid = $gradeidparam";
 			$run  = mysqli_query($conn, $qry);
 			
-			if ($run) {
-			$_SESSION['SuccessMessage'] = "Data Updated Successfully";
-			$redirectString = "viewstudentgrade.php?studentid=$studentidparam";
-		   Header("Location:".$redirectString);
+            if ($run) 
+            {
+?>                
+                <script>
+                    alert('Grade Deleted');
+                </script>
+<?php
+                $redirectString = "viewstudentgrade.php?studentid=$studentidparam";
+                Header("Location:".$redirectString);
 	
-	   }
+	        }
 
-	   else {
-				echo "Invalid Range: Not Updated";			 
-		 }
-	}
-	else 
-	{
-		echo "Failed to Query";
-	}
-}
+	elseif (isset($_POST['reject'])) {
+?>                
+                <script>
+                    alert('Canceled Deletion');
+                </script>
+<?php 
+                $redirectString = "viewstudentgrade.php?studentid=$studentidparam";
+                Header("Location:".$redirectString);
+		}
+
+ }
 ?>
-
 </table>
 </div>
 <div class="container">

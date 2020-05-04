@@ -1,7 +1,7 @@
 <?php require_once('../include/Session.php');?>
 <?php require_once('../include/Functions.php');?>
 <?php echo AdminAreaAccess(); ?>
-<?php   include('../dbcon.php'); ?>
+<?php include('../dbcon.php'); ?>
 
 
 <?php include('../header.php');
@@ -24,8 +24,8 @@ $studentidparam= $_GET['studentid'];
 		</div>
 	</div>
 </div>
-<?php
 
+<?php
 $sql0 = "SELECT studentid, name FROM student WHERE studentid = " . $studentidparam;
 
 		$result0 = mysqli_query($conn,$sql0);
@@ -69,7 +69,8 @@ $sql0 = "SELECT studentid, name FROM student WHERE studentid = " . $studentidpar
 					<td><?php echo $CourseSubj . " " . $CourseNum; ?></td>
 					<td>
 						<?php echo $Grade; ?>
-						<a href="updatestudentgrade.php?studentid=<?php echo $StudentId;?>&gradeid=<?php echo $GradeId;?>" class="btn btn-success" style="float: right;">Update
+						<a href="deletestudentgrade.php?studentid=<?php echo $StudentId;?>&gradeid=<?php echo $GradeId;?>" class="btn btn-danger" style="float: right;">Delete
+						<a href="updatestudentgrade.php?studentid=<?php echo $StudentId;?>&gradeid=<?php echo $GradeId;?>" class="btn btn-primary" style="float: right;">Update
 					</td>
 
 				</tr>
@@ -84,6 +85,7 @@ $sql0 = "SELECT studentid, name FROM student WHERE studentid = " . $studentidpar
  ?>
  <p>
  <span><a href="course.php" class="btn btn-success" style="float: left;">View Course List</a><span>
+ <span><a href="insertstudentgrade.php?studentid=<?php echo $StudentId;?>" class="btn btn-success" style="float: right;">Insert Grade</a><span>
  </p>
 	
 
