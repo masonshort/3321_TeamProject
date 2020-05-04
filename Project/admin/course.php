@@ -1,7 +1,6 @@
 <?php require_once('../include/Session.php');?>
 <?php require_once('../include/Functions.php');?>
-<?php echo UserAreaAccess(); ?>
-
+<?php echo AdminAreaAccess(); ?>
 
 <?php include('../header.php') ?>
 <div class="header-section jumbotron">
@@ -9,8 +8,8 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="text-center">
-					<span><a href="userdash.php" class="btn btn-success" style="float: left;">BACK TO STUDENT DASHBOARD</a><span>
-					Welcome to the Student Dashboard
+                    <span><a href="admindash.php" class="btn btn-success" style="float: left;">BACK TO ADMINISTRATOR HOME PAGE</a><span>
+					Welcome to the Administrator Dashboard
 					<span><a href="logout.php" class="btn btn-success" style="float: right;">LOGOUT</a><span>
 				</h2>	
 			</div>
@@ -19,34 +18,32 @@
 </div>
 
 <table class="table table-bordered table-striped table-responsive">
-	<h2 class="text-center">Your Student Profile</h2>
-	<a href="studentcourse.php" class="btn btn-success" style="float: right;">My Course</a>
+	<h2 class="text-center">List of Courses</h2>
+	<span><a href="insertcourse.php" class="btn btn-success" style="float: right;">Add New Course</a><span>
 	<tr class="text-center">
-		<th>Student ID</th>
-		<th>Full Name</th>
-		<th>Average GPA</th>
-		<th>Profile Picture</th>
+		<th>Course ID</th>
+		<th>Course Name</th>
+		<th>Course Subject</th>
+		<th>Course Number</th>
+		<th>Actions</th>
 	</tr>
 <?php 
 	include('../dbcon.php');
-		$sql = "SELECT * FROM student WHERE loginid = " . $_SESSION['loginid'];
+		$sql = "SELECT * FROM course ORDER BY courseid";
 		$result = mysqli_query($conn,$sql);
 		if (mysqli_num_rows($result)>0) {
 			while ($DataRows = mysqli_fetch_assoc($result)) {
-				$StudentId = $DataRows['studentid'];
-				$Name = $DataRows['name'];
-				$gpa = $DataRows['gpa'];
-				$ProfilePic = $DataRows['image'];
+				$CourseId = $DataRows['courseid'];
+				$CourseName = $DataRows['coursename'];
+				$CourseSubj = $DataRows['coursesubj'];
+				$CourseNum = $DataRows['coursenum'];
 				?>
 				<tr class="text-center">
-					<td><?php echo $StudentId;?></td>
-					<td><?php echo $Name; ?></td>
-					<td><?php echo $gpa; ?></td>
-					<td>
-						<img src="../databaseimg/<?php echo $ProfilePic;?>" alt="img"><br><br>
-						<form action="UpdateImg.php" method="post" enctype="multipart/form-data">
-							<input type="hidden" name="number" value="<?php echo $Number; ?>">
-						</form>
+					<td><?php echo $CourseId;?></td>
+					<td><?php echo $CourseName; ?></td>
+                    <td><?php echo $CourseSubj; ?></td>
+					<td><?php echo $CourseNum; ?></td>
+					<td><span><a href="updatecourse.php?courseid=<?php echo $CourseId;?>" class="btn btn-info">Update</a><span>
 					</td>
 				</tr>
 				<?php

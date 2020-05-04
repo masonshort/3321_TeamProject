@@ -22,28 +22,20 @@
 <div class="container jumbotron">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-			<h2 class="text-center">INSERT STUDENT DETAIL</h2>
+			<h2 class="text-center">Add Course</h2>
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
 				  <div class="form-group">
 				    
-				    Full Name:<input type="text" class="form-control" name="fullname" placeholder="Enter Full Name" required>
+				    Course Name:<input type="text" class="form-control" name="coursename" placeholder="Enter Course Name" required>
 				  </div>
-				  <div class="form-group">
-				    Registered Courses: <input type="text" class="form-control" name="rcourses" placeholder="Enter Registered Courses" required>
-				  </div>
-				  <div class="form-group">
+                  <div class="form-group">
 				    
-				    Average GPA:<input type="text" class="form-control" name="gpa" placeholder="Enter Average GPA" required>
+				    Course Subject:<input type="text" class="form-control" name="coursesubj" placeholder="Enter Course Subject" required>
 				  </div>
 				  <div class="form-group">
-				    
-				    Exam Score:<input type="number" class="form-control" name="escore" placeholder="Enter Exam Score" required>
+				    Course Number: <input type="number" class="form-control" name="coursenum" placeholder="Enter Course Number" required>
 				  </div>
 
-				   <div class="form-group">
-				    
-				    Image:<input type="file" class="form-control" name="simg" required>
-				  </div>
 
 				  <button type="submit" name="submit" class="btn btn-success btn-lg">INSERT</button>
 			</form>
@@ -56,16 +48,14 @@
 <?php 
 
 	if (isset($_POST['submit'])) {
-		if (!empty($_POST['id']) && !empty($_POST['fullname'])) {
+		if (!empty($_POST['coursename']) && !empty($_POST['coursesubj']) && !empty($_POST['coursenum']) && is_numeric($_POST['coursenum'])) {
 		
 			include ('../dbcon.php');
-			$name=$_POST['fullname'];
-			$rcourses=$_POST['rcourses'];
-			$gpa=$_POST['gpa'];
-			$escore=$_POST['escore'];
-			include('ImageUpload.php');
+			$CourseName=$_POST['coursename'];
+            $CourseSubj=$_POST['coursesubj'];
+            $CourseNum=$_POST['coursenum'];
 
-			$sql = "INSERT INTO `student`(`name`, `rcourses`, `gpa`, `escore`,`image`) VALUES ($name','$rcourses','$gpa', '$escore','$imgName')";
+			$sql = "INSERT INTO course(coursename, coursesubj, coursenum) VALUES ('$CourseName', '$CourseSubj', '$CourseNum')";
 
 			$run = mysqli_query($conn,$sql);
 
@@ -76,13 +66,14 @@
 					alert("Data Inserted Successfully");
 				</script>
 				<?php
+                Header("Location:course.php");
 			} else {
 				echo "Error : ".$sql."<br>". mysqli_error($conn); 
 			}
 		} else {
 				?>
 				<script>
-					alert("Please insert atleast studentid and fullname");
+					alert("Invalid data entered");
 				</script>
 				<?php
 		}

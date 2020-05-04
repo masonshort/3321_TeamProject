@@ -26,7 +26,7 @@
                                   Username:<input type="text" class="form-control" name="user" placeholder=" Enter Username" required>
                               </div>
                             <div class="form-group">
-                                  Password:<input type="password" class="form-control" name="password" placeholder="Enter Passoword" required>
+                                  Password:<input type="password" class="form-control" name="password" placeholder="Enter Password" required>
                             </div>
                               <div class="form-group">
                                   <input type="submit" name="login" value="LOGIN" class="btn btn-success btn-block text-center" > 

@@ -21,58 +21,62 @@
 		<div class="col-md-6 col-md-offset-3  jumbotron ">
 			<div  style="text-align: center;">
 				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data" >
-				Choose Exam Score: <select name="escore" class="btn btn-info" style="margin-right: 30px;">					<option>Select</option>
-									<option>60</option>
-									<option>70</option>
-									<option>80</option>
-									<option>90</option>
-									<option>100</option>
-								</select>
-				<input type="submit" name="search" value="SEARCH" class="btn btn-success">
+				Choose Search Type: <select name="searchType" class="btn btn-info" style="margin-right: 30px;">					<option>Select</option>
+									<option>Student ID</option>
+									<option>Name</option>
+									<option>Registered Courses</option>
+									<option>GPA</option>
+								</select><br><br>
+								<div class="form-group">
+                                  <input type="text" class="form-control" name="search" placeholder=" Enter Value" required>
+                              </div>
+				<input type="submit" name="confirm" value="CONFIRM" class="btn btn-success">
 			</form>
 			</div>
 		</div>
 	</div>
-
+</div>
 <?php
     echo  ErrorMessage();
     echo  SuccessMessage();
  ?>
+
 <table class="table table-bordered table-striped table-responsive">
 	<h2 class="text-center">Update Student's Information</h2>
 	<tr class="text-center">
 		<th>Student Id</th>
 		<th>Exam Score</th>
 		<th>Full Name</th>
-		<th >Registered Courses</th>
+		<th>Registered Courses</th>
 		<th>Average GPA</th>
 		<th>Profile Pic</th>
 		<th>Update</th>
 	</tr>
 <?php 
 	include('../dbcon.php');
-	if (isset($_POST['search'])) {
+	if (isset($_POST['confirm'])) {
+		$searchType = $_POST['searchType'];
+		$search = $_POST['search'];
 
-		$escore = $_POST['escore'];
-
-		$sql = "SELECT * FROM `student` WHERE `escore` = '$escore'";
+		if ($searchType == 'Student ID'){
+			$sql = "SELECT * FROM student WHERE studentid = " . $search;
+		}
 
 		$result = mysqli_query($conn,$sql);
 		if (mysqli_num_rows($result)>0) {
 			while ($DataRows = mysqli_fetch_assoc($result)) {
 				$StudentId = $DataRows['studentid'];
 				$Name = $DataRows['name'];
-				$Rcourses = $DataRows['rcourses'];
 				$gpa = $DataRows['gpa'];
-				$Escore = $DataRows['escore'];
 				$ProfilePic = $DataRows['image'];
 				?>
 				<tr class="text-center">
 					<td><?php echo $StudentId;?></td>
-					<td><?php echo $Escore;?></td>
 					<td><?php echo $Name; ?></td>
-					<td><?php echo $Rcourses; ?></td>
-					<td><?php echo $gpa; ?></td>
+					<td><?php echo $gpa; 
+
+					
+					?></td>
 					<td>
 						<img src="../databaseimg/<?php echo $ProfilePic;?>" alt="img"><br><br>
 						<form action="UpdateImg.php" method="post" enctype="multipart/form-data">
@@ -81,7 +85,7 @@
 							<input type="submit" name="submitimg" value="UPDATE" class="btn btn-warning btn-sm" style="float: right;"><br>
 						</form>
 					</td>
-					<td><a href="UpdateRecord.php?Update=<?php echo $Number; ?>" class="btn btn-warning">UPDATE</a></td>
+					<td><a href="UpdateRecord.php?Update=".$DataRow['studentid'] class="btn btn-warning">UPDATE</a></td>
 				</tr>
 				<?php
 				

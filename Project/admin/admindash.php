@@ -23,9 +23,10 @@
             <div>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 jumbotron" >
-                        <a href="addstudent.php" class="btn btn-info btn-lg">INSERT STUDENT DETAIL</a><br><br>
-                        <a href="updatestudent.php" class="btn btn-info btn-lg">UPDATE STUDENT DETAIL</a><br><br>
-                        <a href="deletestudent.php" class="btn btn-info btn-lg">DELETE STUDENT DETAIL</a>   
+                    <h2 class="text-center">Please Select a Category</h2>
+                        <a href="studentdetail.php" class="btn btn-primary btn-lg">Student List</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="grade.php" class="btn btn-danger btn-lg">Grade List</a><br><br>
+                        <a href="course.php" class="btn btn-warning btn-lg">Course List</a><br><br>
                     </div>
                 </div>
             </div>
